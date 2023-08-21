@@ -2,9 +2,9 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <% if user_signed_in? %>
   <%= 'your signed in' %>
+  <%= current_user.email %>
 <% else %>
   <%= 'please log-in' %>
 <% end %>
 
 <p>as </p>
-<%= current_user.email %>
