@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_210901) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_090923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_210901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "price"
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 
@@ -33,10 +34,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_210901) do
     t.date "end_date"
     t.integer "total_price"
     t.bigint "user_id", null: false
-    t.bigint "cats_id", null: false
+    t.bigint "cat_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cats_id"], name: "index_reservations_on_cats_id"
+    t.index ["cat_id"], name: "index_reservations_on_cat_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -56,6 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_210901) do
   end
 
   add_foreign_key "cats", "users"
-  add_foreign_key "reservations", "cats", column: "cats_id"
+  add_foreign_key "reservations", "cats"
   add_foreign_key "reservations", "users"
 end

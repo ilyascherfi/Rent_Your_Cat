@@ -4,10 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable;
 
-  has_many :revervations, through: :cats, dependent: :destroy
   has_many :cats, dependent: :destroy
+  has_many :revervations
 
-  validates :first_name, :last_name, presence: true
-  validates :address, presence: true
-
+  validates :first_name, :last_name, :address, presence: true
 end
