@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :cats, dependent: :destroy
   has_many :revervations
 
-  validates :first_name, :last_name, :address, presence: true
+  validates :first_name, :last_name, :address, :image_url, presence: true
 end
