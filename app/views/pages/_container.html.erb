@@ -2,36 +2,24 @@
 <div class="container my-5">
   <div class= "card-trip">
     <div class="cards">
-        <%# chat 1  %>
-        <div class="card-trip">
-          <%= render "image_carrousel" %>
-          <div class="card-trip-infos">
-            <div>
-              <h2>chat : <span class="text-secondary">50€ </span></h2>
-              <p>un magnifique chat de maison</p>
+        <% @cats.each do |cat| %>
+          <%# chat loop  %>
+            <div class="card-trip">
+              <img src="<%= cat.image_url %>" alt="">
+              <div class="card-trip-infos">
+                <div >
+                  <div class= "d-flex justify-content-between">
+                    <div>
+                      <h2><span class="text-secondary">Nom: </span> <%= cat.name %> </h2>
+                      <h2><span class="text-secondary">Race: </span> <%= cat.race %></h2>
+                    </div>
+                    <h2><span class="text-secondary">Prix: </span> <%= cat.price %> € </h2>
+                  </div>
+                  <p><span class= "fw-semibold">Description: </span><%= cat.description %></p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <%# chat 2 %>
-        <div class="card-trip">
-          <%= render "image_carrousel" %>
-          <div class="card-trip-infos">
-            <div>
-              <h2>chat : <span class="text-secondary">50€ </span></h2>
-              <p>un magnifique chat de maison</p>
-            </div>
-          </div>
-        </div>
-        <%# chat 3 %>
-        <div class="card-trip">
-          <%= render "image_carrousel" %>
-          <div class="card-trip-infos">
-            <div>
-              <h2>chat : <span class="text-secondary">50€ </span></h2>
-              <p>un magnifique chat de maison</p>
-            </div>
-          </div>
-        </div>
+        <% end %>
     </div>
   </div>
 </div>
