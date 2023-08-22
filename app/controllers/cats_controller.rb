@@ -4,17 +4,12 @@ class CatsController < ApplicationController
     @cats = Cat.all
   end
 
-  def new
-    @cat = Cat.new
-  end
 
   def show
-
   end
 
   def new
     @cat = Cat.new
-    # redirect_to cat_path(@cat)
   end
 
   def edit
@@ -22,12 +17,14 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
-    if @list.save
+    @cat.user = current_user
+    if @cat.save
       redirect_to cat_path(@cat), notice: "cat was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     if @cat.update(cat_params)
