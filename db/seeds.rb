@@ -52,7 +52,7 @@ puts 'Creating 100 cats'
   cat = JSON.parse(cat_serialized)
   image_url = cat[0]["url"]
   cat_user = User.all.sample
-  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['male', 'female'].sample, race: cat_breeds.sample, location: cat_user.address, description: Faker::Lorem.paragraph, price: rand(5..50), image_url: image_url)
+  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: cat_user.address, description: Faker::Lorem.paragraph, price: rand(5..50), image_url: image_url)
   puts cat.name
 end
 puts ''
