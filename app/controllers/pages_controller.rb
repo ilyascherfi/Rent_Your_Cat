@@ -5,4 +5,6 @@ class PagesController < ApplicationController
     @cats = Cat.all
   end
 
+  def profile
+  end
 end
