@@ -58,13 +58,17 @@ puts '100 cats created'
 
 puts 'Creating 50 resa'
 today = Date.today
-
-50.times do
-  random_days = rand(0..30)
-  random_date = today + random_days
+100.times do
   user = User.all.sample
-  reservation = Reservation.create!(user: user, cat: Cat.where.not(user: user).sample, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: 50)
-  puts reservation.cat.name
+  cat = Cat.all.sample
+  if user.id == cat.user_id
+    return
+  else
+    random_days = rand(0..30)
+    random_date = today + random_days
+    reservation = Reservation.create!(user: user, cat: cat, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: (cat.price * 3))
+    puts reservation.cat.name
+  end
 end
 puts ''
 puts '50 resa created'
