@@ -6,6 +6,7 @@ class CatsController < ApplicationController
 
 
   def show
+    @cat = Cat.find(params[:id])
   end
 
   def new
@@ -46,6 +47,6 @@ class CatsController < ApplicationController
   end
 
   def cat_params
-    params.require(:cat).permit(:age, :race, :sexe, :location, :description, :user_id, :name, :price)
+    params.require(:cat).permit(:age, :race, :sexe, :location, :description, :user_id, :name, :price, photos: [])
   end
 end
