@@ -97,13 +97,31 @@
   min-height: 60vh;
 }
 
+
+
 .img-carroussel {
   height: 300px;
   object-fit: cover;
 }
 
-// .bouton-show-cats {
-//   display: flex;
-//   flex-direction: row-reverse;
-//   justify-content: flex-end;
-// }
+.card-img{
+  height: 617px;
+  // width: 810px;
+  object-fit: cover
+}
+
+.card-small-img{
+  height: 304px;
+  // width: 361px;
+  object-fit: cover
+}
+
+.img-round{
+  height: 45px;
+  width: 45px;
+  border-radius: 50px
+}
+
+.card-text{
+  width: 371px;
+}
