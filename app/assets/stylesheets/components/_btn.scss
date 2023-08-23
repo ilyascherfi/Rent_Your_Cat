@@ -1,4 +1,5 @@
-.button-pink{
+
+  .btn-grad {
   background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%);
   margin: 10px;
   padding: 15px 45px;
@@ -12,10 +13,8 @@
   display: block;
 }
 
-.button-pink{
+.btn-grad:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
-
-
