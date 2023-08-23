@@ -34,8 +34,6 @@ cat_breeds = [
 
 puts 'Destroying all'
 User.destroy_all
-Cat.destroy_all
-Reservation.destroy_all
 
 puts 'Creating 50 users'
 50.times do
@@ -64,7 +62,8 @@ today = Date.today
 50.times do
   random_days = rand(0..30)
   random_date = today + random_days
-  reservation = Reservation.create!(user: User.all.sample, cat: Cat.all.sample, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: 50)
+  user = User.all.sample
+  reservation = Reservation.create!(user: user, cat: Cat.where.not(user: user).sample, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: 50)
   puts reservation.cat.name
 end
 puts ''
