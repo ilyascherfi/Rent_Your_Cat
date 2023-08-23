@@ -7,5 +7,9 @@ class User < ApplicationRecord
   has_many :cats, dependent: :destroy
   has_many :revervations, dependent: :destroy
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :first_name, :last_name, :address, :image_url, presence: true
+
 end
