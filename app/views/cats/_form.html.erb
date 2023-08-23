@@ -1,0 +1,15 @@
+<%# <div class= "container" >
+  <div class = "row "> %>
+      <%= simple_form_for @cat do |f| %>
+        <%= f.input :name %>
+        <%= f.input :age %>
+        <%= f.input :race %>
+        <%= f.input :price %>
+        <%= f.input :description %>
+        <%# <%= f.input :image_url %>
+        <%= f.input :sexe, collection: Cat::SEXE %>
+        <%= f.input :location %>
+        <%= f.submit class: "btn btn-primary mb-2"  %>
+      <% end  %>
+  <%# </div>
+</div> %>
