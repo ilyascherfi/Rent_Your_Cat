@@ -1,25 +1,55 @@
-
-<div class="card-cats d-flex">
-  <img     <%= @cat.photos.count %>
-  <% @cat.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %> >
-  <div class="card-product-infos">
-    <h2><%= @cat.name %></h2>
-    <p><%= @cat.race %></p>
-    <p><%= @cat.sexe %></p>
-    <p><%= @cat.description %></p>
-    <p><%= @cat.location %></p>
+<div class= "footer-container ">
+  <h2 class="pt-3"><%= @cat.name %></h2>
+  <div class = "d-flex flex-row ms-3" >
+    <p>reviews(comming soon)</p>
+    <p class= "ms-3">Address:  <%= @cat.location  %></p>
   </div>
+  <div class="d-flex flex-row pb-5">
+    <div class= "" >
+      <img src="https://upload.chatsdumonde.com/img_global/24-anatomie/_medium-21170-chat-noir-et-blanc.jpg" class="card-img rounded-4 " alt="">
+    </div>
+    <div class= "d-flex flex-column ">
+      <img src="https://upload.chatsdumonde.com/img_global/25-anatomie/chat-noir-et-blanc/_medium-21170_17266-un-chat-blanc-et-noir-aux-yeux-jaunes.jpg"  class="card-small-img rounded-4  mb-2 ps-2" alt="...">
+      <img src="https://upload.chatsdumonde.com/img_global/25-anatomie/chat-noir-et-blanc/_medium-21170_17266-un-chat-blanc-et-noir-aux-yeux-jaunes.jpg" class="card-small-img rounded-4  d-block ps-2"  alt="...">
+    </div>
+  </div>
+    <div class= "d-flex flew-row justify-content-between ps-3">
+       <div class= >
+         <div class="d-flex " >
+              <div class = "" >
+                <h2> Name: <%= @cat.name %></h2>
+                <p class="ps-3">Race: <%= @cat.race %></p>
+                <p class="ps-3">Sexe: <%= @cat.sexe %></p>
+              </div>
+            <img src="<%= User.find(@cat.user_id).image_url%>" class= "img-round margin-icone" alt="">
+          </div>
+          <hr>
+          <p> <%= @cat.description %></p>
+       </div>
+        <div class= "card card-text  rounded-4 pb-3 ">
+          <p class ="fw-bolder mt-3 mx-3">price by night <%= @cat.price %> €</p>
+            <div class= "card justify-content-center">
+              <div class = >
+                 <%= simple_form_for [@cat, @reservation] do |f| %>
+                  <%= f.input :start_date,
+                  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+                    <%= f.input :end_date,
+                  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+                    <div class="btn-grad ">
+                      <%= f.button :submit %>
+                    </div>
+                 <%end%>
+              </div>
+            </div>
+            <div class = "d-flex flex-row justify-content-between mt-3">
+              <p class= "fw-light mt-3 mx-3 ps-3"> Price <%= @cat.price %> €</p>
+              <p class= "fw-light mt-3 mx-3 ps-3">Total : <%= @cat.price * 3 %> €</p>
+            </div>
+        </div>
+    </div>
 </div>
-
- <div class = "d-flex pt-10">
-      <%= link_to "Supprimer le chat", cat_path(@cat), class: "btn btn-danger btn btn-light rounded-pill", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this cat" } %>
-<% if @cat.user == current_user %>
-      <%= link_to "Mettre à jour ses informations", edit_cat_path(@cat), class: "btn btn-light rounded-pill" %>
- <% end %>
-  </div>
-
 
 <%# <%= link_to "Supprimer le chat", cat_path(@cat), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this cat" } %>
 
