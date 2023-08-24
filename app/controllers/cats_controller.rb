@@ -16,9 +16,10 @@ class CatsController < ApplicationController
   def edit
   end
 
+
+
   def create
     @cat = Cat.new(cat_params)
-    @cat.user = current_user
     if @cat.save
       redirect_to cat_path(@cat), notice: "cat was successfully created."
     else
