@@ -25,7 +25,6 @@ class CatsController < ApplicationController
     end
   end
 
-
   def update
     if @cat.update(cat_params)
       redirect_to cat_path(@cat), notice: "cat was successfully updated.", status: :see_other
