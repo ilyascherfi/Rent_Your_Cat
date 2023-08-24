@@ -6,11 +6,11 @@
   </div>
   <div class="d-flex flex-row pb-5">
     <div class= "" >
-      <img src="https://upload.chatsdumonde.com/img_global/24-anatomie/_medium-21170-chat-noir-et-blanc.jpg" class="card-img rounded-4 " alt="">
+      <img src="<%= @cat.image_url  %>" class="card-img rounded-4 " alt="">
     </div>
     <div class= "d-flex flex-column ">
-      <img src="https://upload.chatsdumonde.com/img_global/25-anatomie/chat-noir-et-blanc/_medium-21170_17266-un-chat-blanc-et-noir-aux-yeux-jaunes.jpg"  class="card-small-img rounded-4  mb-2 ps-2" alt="...">
-      <img src="https://upload.chatsdumonde.com/img_global/25-anatomie/chat-noir-et-blanc/_medium-21170_17266-un-chat-blanc-et-noir-aux-yeux-jaunes.jpg" class="card-small-img rounded-4  d-block ps-2"  alt="...">
+      <img src="<%= @cat.image_url  %>"  class="card-small-img rounded-4  mb-2 ps-2" alt="...">
+      <img src="<%= @cat.image_url  %>" class="card-small-img rounded-4  d-block ps-2"  alt="...">
     </div>
   </div>
     <div class= "d-flex flew-row justify-content-between ps-3">
@@ -29,37 +29,16 @@
         <div class= "card card-text  rounded-4 pb-3 ">
           <p class ="fw-bolder mt-3 mx-3">price by night <%= @cat.price %> €</p>
             <div class= "card justify-content-center">
-              <div class = >
-                 <%= simple_form_for [@cat, @reservation] do |f| %>
-                  <%= f.input :start_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
-                    <%= f.input :end_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
-                    <div class="btn-grad ">
-                    <%= f.button :submit %>
-                    </div>
-                 <%end%>
+
+              <div>
+                <div class="btn-grad ">
+                  <%= link_to "Reserver ce Chat", new_cat_reservation_path(@cat)  %>
+                </div>
+
               </div>
             </div>
             <div class = "d-flex flex-row justify-content-between mt-3">
-              <p class= "fw-light mt-3 mx-3 ps-3"> Price <%= @cat.price %> €</p>
-              <p class= "fw-light mt-3 mx-3 ps-3">Total : <%= @cat.price * 3 %> €</p>
             </div>
         </div>
     </div>
 </div>
-
-<%# <%= link_to "Supprimer le chat", cat_path(@cat), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this cat" } %>
-
-
-<%# edit_cat
-
-<%# delete cat %>
-
-
-<%# btn-light %>
-
-<%# btn-cancel %>
-<%# btn-primary %>

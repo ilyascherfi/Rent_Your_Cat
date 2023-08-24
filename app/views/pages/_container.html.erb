@@ -1,6 +1,6 @@
 <div class="d-flex" data-controller="button">
   <div class="container my-5">
-    <button class = "btn btn-primary p-3" id="button-map" data-action="click->button#togglemap" >Afficher la carte</button>
+    <button class = "btn btn-primary p-3" id="button-map" data-action="click->button#togglemap" >Cacher la carte</button>
     <div class= "card-trip">
       <div class="cards">
           <% @cats.each do |cat| %>
@@ -27,5 +27,5 @@
     </div>
   </div>
 
-  <div id="map" class="d-none" data-controller="map" style="width: 40%; height: 850px; margin-top: 100px;" data-button-target="button"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div id="map_div"  data-controller="map" style="width: 40%; height: 850px; margin-top: 100px;" data-button-target="button"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>

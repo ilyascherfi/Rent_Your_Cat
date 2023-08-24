@@ -4,7 +4,6 @@ class CatsController < ApplicationController
     @cats = Cat.all
   end
 
-
   def show
     @reservation = Reservation.new
   end

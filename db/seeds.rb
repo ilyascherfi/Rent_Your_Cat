@@ -30,35 +30,97 @@ cat_breeds = [
   "Exotic Shorthair",
   "Somali"
 ]
-
+addresses = [
+  "12 Rue de la Paix, Paris, 75002",
+  "45 Avenue des Champs-Élysées, Paris, 75008",
+  "8 Rue du Faubourg Saint-Honoré, Paris, 75008",
+  "23 Rue de Rivoli, Paris, 75004",
+  "17 Rue Montorgueil, Paris, 75001",
+  "36 Quai des Orfèvres, Paris, 75001",
+  "5 Rue de la Cité, Paris, 75004",
+  "67 Rue de Rennes, Paris, 75006",
+  "28 Boulevard Saint-Germain, Paris, 75005",
+  "9 Rue de Vaugirard, Paris, 75006",
+  "72 Rue du Faubourg Saint-Antoine, Paris, 75012",
+  "14 Avenue de l'Opéra, Paris, 75001"
+];
+img_url = ["https://cdn2.thecatapi.com/images/e43.jpg",
+  "https://cdn2.thecatapi.com/images/a3n.jpg",
+  "https://cdn2.thecatapi.com/images/bbr.jpg",
+  "https://cdn2.thecatapi.com/images/mp.jpg",
+  "https://cdn2.thecatapi.com/images/171.jpg",
+  "https://cdn2.thecatapi.com/images/bti.jpg",
+  "https://cdn2.thecatapi.com/images/kh.jpg",
+  "https://cdn2.thecatapi.com/images/MjA2NDUzMg.jpg",
+  "https://cdn2.thecatapi.com/images/MjAzNzA4Mg.jpg",
+  "https://cdn2.thecatapi.com/images/cnh.jpg",
+  "https://cdn2.thecatapi.com/images/vH0bd0YDH.jpg",
+  "https://cdn2.thecatapi.com/images/3a8.jpg",
+  "https://cdn2.thecatapi.com/images/bGUQ04k2E.jpg",
+  "https://cdn2.thecatapi.com/images/74s.jpg",
+  "https://cdn2.thecatapi.com/images/c8.jpg",
+  "https://cdn2.thecatapi.com/images/4cq.gif",
+  "https://cdn2.thecatapi.com/images/j9_ETlBMp.jpg",
+  "https://cdn2.thecatapi.com/images/b89.jpg",
+  "https://cdn2.thecatapi.com/images/83r.gif",
+  "https://cdn2.thecatapi.com/images/MTc4NDg3Nw.png",
+  "https://cdn2.thecatapi.com/images/cgc.jpg",
+  "https://cdn2.thecatapi.com/images/sxIXJax6h.jpg",
+  "https://cdn2.thecatapi.com/images/ase.jpg",
+  "https://cdn2.thecatapi.com/images/bgv.jpg",
+  "https://cdn2.thecatapi.com/images/9pn.jpg",
+  "https://cdn2.thecatapi.com/images/yZE2JpeXz.jpg",
+  "https://cdn2.thecatapi.com/images/4ml.jpg",
+  "https://cdn2.thecatapi.com/images/9qh.jpg",
+  "https://cdn2.thecatapi.com/images/ftmw29QPb.jpg",
+  "https://cdn2.thecatapi.com/images/9ad.jpg",
+  "https://cdn2.thecatapi.com/images/MTgxNzkxMQ.jpg",
+  "https://cdn2.thecatapi.com/images/2d6.jpg",
+  "https://cdn2.thecatapi.com/images/MTcwMTgxMg.jpg",
+  "https://cdn2.thecatapi.com/images/MTkzMDM2MQ.jpg",
+  "https://cdn2.thecatapi.com/images/ar2.jpg",
+  "https://cdn2.thecatapi.com/images/67j.png",
+  "https://cdn2.thecatapi.com/images/csc.jpg",
+  "https://cdn2.thecatapi.com/images/MjAxMzk4OQ.jpg",
+  "https://cdn2.thecatapi.com/images/4vr.jpg",
+  "https://cdn2.thecatapi.com/images/c3s.jpg",
+  "https://cdn2.thecatapi.com/images/b7h.jpg",
+  "https://cdn2.thecatapi.com/images/MTc1NTg5OA.jpg",
+  "https://cdn2.thecatapi.com/images/ao2.jpg",
+  "https://cdn2.thecatapi.com/images/a2u.jpg",
+  "https://cdn2.thecatapi.com/images/2f6.jpg"]
 
 puts 'Destroying all'
 User.destroy_all
 
-puts 'Creating 50 users'
-50.times do
-  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', address: Faker::Address.full_address, image_url: Faker::Avatar.image)
+
+puts 'Creating 10 users'
+10.times do
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', image_url: Faker::Avatar.image)
+
   puts user.first_name
 end
 puts ''
-puts '50 users created'
+puts '10 users created'
 
-puts 'Creating 100 cats'
-100.times do
-  url = 'https://api.thecatapi.com/v1/images/search'
-  cat_serialized = URI.open(url).read
-  cat = JSON.parse(cat_serialized)
-  image_url = cat[0]["url"]
+puts 'Creating 12 cats'
+addresses.each do |address|
+  a = addresses.index(address)
+
   cat_user = User.all.sample
-  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: cat_user.address, description: Faker::Lorem.paragraph, price: rand(5..50), image_url: image_url)
+  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: address, description: Faker::Lorem.paragraph, price: rand(5..50), images_url: [img_url[(a * 3)], img_url[(a * 3) + 1], img_url[(a * 3) + 2]])
   puts cat.name
 end
 puts ''
-puts '100 cats created'
+puts '12 cats created'
 
-puts 'Creating 50 resa'
+puts 'Creating resa'
 today = Date.today
-100.times do
+
+
+
+5.times do
+
   user = User.all.sample
   cat = Cat.all.sample
   if user.id == cat.user_id
