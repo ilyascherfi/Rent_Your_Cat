@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cats, dependent: :destroy
-  has_many :revervations, dependent: :destroy
+  has_many :reservations
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

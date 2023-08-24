@@ -92,41 +92,41 @@ img_url = ["https://cdn2.thecatapi.com/images/e43.jpg",
 
 
 puts 'Destroying all'
+Reservation.destroy_all
 User.destroy_all
 Cat.destroy_all
-Reservation.destroy_all
 
-# puts 'Creating 10 users'
-# 10.times do
-#   user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', image_url: Faker::Avatar.image)
-#   puts user.first_name
-# end
-# puts ''
-# puts '10 users created'
+puts 'Creating 10 users'
+10.times do
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', image_url: Faker::Avatar.image)
+  puts user.first_name
+end
+puts ''
+puts '10 users created'
 
-# puts 'Creating 12 cats'
-# addresses.each do |address|
-#   a = addresses.index(address)
-#   cat_user = User.all.sample
-#   cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: address, description: Faker::Lorem.paragraph, price: rand(5..50), images_url: [img_url[(a * 3)], img_url[(a * 3) + 1], img_url[(a * 3) + 2]])
-#   puts cat.name
-# end
-# puts ''
-# puts '12 cats created'
+puts 'Creating 12 cats'
+addresses.each do |address|
+  a = addresses.index(address)
+  cat_user = User.all.sample
+  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: address, description: Faker::Lorem.paragraph, price: rand(5..50), images_url: [img_url[(a * 3)], img_url[(a * 3) + 1], img_url[(a * 3) + 2]])
+  puts cat.name
+end
+puts ''
+puts '12 cats created'
 
-# puts 'Creating resa'
-# today = Date.today
-# 5.times do
-#   user = User.all.sample
-#   cat = Cat.all.sample
-#   if user.id == cat.user_id
-#     return
-#   else
-#     random_days = rand(0..30)
-#     random_date = today + random_days
-#     reservation = Reservation.create!(user: user, cat: cat, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: (cat.price * 3))
-#     puts reservation.cat.name
-#   end
-# end
-# puts ''
-# puts '50 resa created'
+puts 'Creating resa'
+today = Date.today
+5.times do
+  user = User.all.sample
+  cat = Cat.all.sample
+  if user.id == cat.user_id
+    return
+  else
+    random_days = rand(0..30)
+    random_date = today + random_days
+    reservation = Reservation.create!(user: user, cat: cat, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: (cat.price * 3))
+    puts reservation.cat.name
+  end
+end
+puts ''
+puts '50 resa created'

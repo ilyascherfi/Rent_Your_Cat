@@ -24,11 +24,3 @@
   </ul>
   <%= link_to 'edit', edit_user_registration_path %>
 </div>
-
-
-<div class = "card">
-  <%= current_user.cats.first.name %>
-  <% current_user.cats.first.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</div>
