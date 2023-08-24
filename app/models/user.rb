@@ -10,6 +10,6 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  validates :first_name, :last_name, :address, :image_url, presence: true
+  validates :first_name, :last_name, :image_url, presence: true
 
 end
