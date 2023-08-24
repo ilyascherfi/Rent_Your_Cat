@@ -119,8 +119,8 @@
 }
 
 .img-round{
-  height: 45px;
-  width: 45px;
+  height: 60px;
+  width: 60px;
   border-radius: 50px
 }
 
@@ -131,7 +131,7 @@
 
 
 .margin-icone{
-  margin-left: 37rem
+  margin-left: 30rem
 }
 
 .card-product {
@@ -203,7 +203,23 @@
   padding: 16px;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+.card-user{
+
+  color: rgb(1, 1, 1);
+  font-size: 24px;
+  font-weight:normal;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0  6px rgba(0,0,0,0.1);
+  padding-left: 20rem;
+  padding-right: 20rem;
+}
+
+.card-resa{
+  padding-left: 20rem;
+  padding-right: 20rem;
+}
+
+.card-shadow{
+  box-shadow: 5px 5px 3px 3px rgba(0,0,0,0.2);
 }
