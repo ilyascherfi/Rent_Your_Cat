@@ -4,10 +4,10 @@ class PagesController < ApplicationController
   def home
     @cats = Cat.all
     @users = User.all
-    @markers = @users.geocoded.map do |user|
+    @markers = @cats.geocoded.map do |cat|
       {
-        lat: user.latitude,
-        lng: user.longitude
+        lat: cat.latitude,
+        lng: cat.longitude
       }
     end
   end
