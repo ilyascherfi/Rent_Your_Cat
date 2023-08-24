@@ -2,7 +2,6 @@ class CatsController < ApplicationController
   before_action :find_cat, only: %i[show edit update destroy]
   def index
     @cats = Cat.all
-    
   end
 
 
