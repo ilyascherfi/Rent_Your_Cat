@@ -14,12 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.cat = @cat
     @reservation.statut = true
-    # finish_date = DateTime.parse(params[:reservation][:end_date]).to_time
-    # start_date = DateTime.perse(params[:reservation][:start_date]).to_time
-    # seconds = (finish_date - start_date)
-    # days = seconds/
-    # @reservation.total_price = @cat.price *  - params[:reservation][:start_date]
-    # raise
+
     if @reservation.save!
       redirect_to profile_path, notice: "reservation was successfully created."
     else

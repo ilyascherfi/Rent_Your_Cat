@@ -91,12 +91,14 @@ img_url = ["https://cdn2.thecatapi.com/images/e43.jpg",
   "https://cdn2.thecatapi.com/images/2f6.jpg"]
 
 puts 'Destroying all'
+Reservation.destroy_all
 User.destroy_all
+Cat.destroy_all
 
 
 puts 'Creating 10 users'
 10.times do
-  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', image_url: Faker::Avatar.image)
+  user = User.create!(first_name: Faker::Name.first_name, address:addresses.sample, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', image_url: Faker::Avatar.image)
 
   puts user.first_name
 end
@@ -133,4 +135,4 @@ today = Date.today
   end
 end
 puts ''
-puts '50 resa created'
+puts '5 resa created'
