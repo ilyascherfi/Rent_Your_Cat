@@ -6,7 +6,7 @@
   </div>
   <div class="d-flex flex-row pb-5">
     <div class= "" >
-      <img src="https://upload.chatsdumonde.com/img_global/24-anatomie/_medium-21170-chat-noir-et-blanc.jpg" class="card-img rounded-4 " alt="">
+      <%= cl_image_tag @cat.photos.first.key, class: "card-img rounded-4" %>
     </div>
     <div class= "d-flex flex-column ">
       <img src="https://upload.chatsdumonde.com/img_global/25-anatomie/chat-noir-et-blanc/_medium-21170_17266-un-chat-blanc-et-noir-aux-yeux-jaunes.jpg"  class="card-small-img rounded-4  mb-2 ps-2" alt="...">

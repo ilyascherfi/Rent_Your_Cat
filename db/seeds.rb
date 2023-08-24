@@ -49,8 +49,12 @@ puts 'Creating 100 cats'
   cat_serialized = URI.open(url).read
   cat = JSON.parse(cat_serialized)
   image_url = cat[0]["url"]
+  puts image_url
+  file = URI.open(image_url)
   cat_user = User.all.sample
-  cat = Cat.create!(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: cat_user.address, description: Faker::Lorem.paragraph, price: rand(5..50), image_url: image_url)
+  cat = Cat.new(user: cat_user, name: Faker::Creature::Animal.name, age: rand(1..20), sexe: ['Male', 'Female'].sample, race: cat_breeds.sample, location: cat_user.address, description: Faker::Lorem.paragraph, price: rand(5..50))
+  cat.photos.attach(io: file, filename: "#{cat.name}.png", content_type: "image/png")
+  cat.save!
   puts cat.name
 end
 puts ''
