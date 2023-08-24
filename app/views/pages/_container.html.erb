@@ -9,7 +9,7 @@
               <div class="card-trip">
                 <% if cat.photos.attached? %>
                   <%cat.photos.first(1).each do |img| %>
-                    <%= cl_image_tag img.key, height:300, width:400, crop: :fill %>
+                    <%= cl_image_tag img.key, crop: :fill %>
                   <% end %>
                 <% else %>
                 <img src="<%= cat.images_url[0]%>" alt="">
