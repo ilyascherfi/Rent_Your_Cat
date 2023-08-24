@@ -1,8 +1,6 @@
 class ReservationsController < ApplicationController
 
   def show
-    @reservation = Reservation.new
-    @cat = Cat.find(params[:cat_id])
   end
 
   def new
@@ -13,9 +11,17 @@ class ReservationsController < ApplicationController
   def create
     @cat = Cat.find(params[:cat_id])
     @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
     @reservation.cat = @cat
-    if @reservation.save
-      redirect_to @reservation, notice: "reservation was successfully created."
+    @reservation.statut = true
+    # finish_date = DateTime.parse(params[:reservation][:end_date]).to_time
+    # start_date = DateTime.perse(params[:reservation][:start_date]).to_time
+    # seconds = (finish_date - start_date)
+    # days = seconds/
+    # @reservation.total_price = @cat.price *  - params[:reservation][:start_date]
+    # raise
+    if @reservation.save!
+      redirect_to profile_path, notice: "reservation was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

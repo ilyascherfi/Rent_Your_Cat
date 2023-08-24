@@ -36,7 +36,7 @@ puts 'Destroying all'
 User.destroy_all
 
 puts 'Creating 50 users'
-50.times do
+10.times do
   user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: 'azerty', address: Faker::Address.full_address, image_url: Faker::Avatar.image)
   puts user.first_name
 end
@@ -44,7 +44,7 @@ puts ''
 puts '50 users created'
 
 puts 'Creating 100 cats'
-100.times do
+20.times do
   url = 'https://api.thecatapi.com/v1/images/search'
   cat_serialized = URI.open(url).read
   cat = JSON.parse(cat_serialized)
@@ -58,7 +58,7 @@ puts '100 cats created'
 
 puts 'Creating 50 resa'
 today = Date.today
-100.times do
+20.times do
   user = User.all.sample
   cat = Cat.all.sample
   if user.id == cat.user_id
