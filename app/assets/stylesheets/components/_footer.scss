@@ -10,8 +10,9 @@ ul{
 	list-style: none;
 }
 .footer{
-	background-color: #24262b;
-  padding: 70px 0;
+	background: rgb(229,93,135);
+background: linear-gradient(90deg, rgba(229,93,135,1) 0%, rgba(95,195,228,1) 51%, rgba(229,93,135,1) 100%);
+  padding: 20px 0;
 }
 .footer-col{
    width: 25%;
@@ -30,7 +31,7 @@ ul{
 	position: absolute;
 	left:0;
 	bottom: -10px;
-	background-color: #e91e63;
+	background-color: #56518a;
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
@@ -44,7 +45,7 @@ ul{
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
-	color: #bbbbbb;
+	color: #ffffff;
 	display: block;
 	transition: all 0.3s ease;
 }

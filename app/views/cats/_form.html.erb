@@ -1,6 +1,7 @@
-<%# <div class= "container" >
-  <div class = "row "> %>
+
+   <div class = "">
       <%= simple_form_for @cat do |f| %>
+
         <%= f.input :name %>
         <%= f.input :age %>
         <%= f.input :race %>
@@ -9,7 +10,6 @@
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.input :sexe, collection: Cat::SEXE %>
         <%= f.input :location %>
-        <%= f.submit class: "btn btn-primary mb-2"  %>
+        <%= f.submit class: "btn-grad mb-2"  %>
       <% end  %>
-  <%# </div>
-</div> %>
+    </div>
