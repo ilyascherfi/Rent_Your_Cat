@@ -16,6 +16,9 @@
         <img class='avatar-large' src="<%= current_user.image_url %>" alt="">
       </p>
 </div>
+    <div class="row justify-content-end mt-3">
+      <p class =" col-2 btn-grad"> <%= link_to 'edit', edit_user_registration_path %></p>
+    </div>
   </div>
   <div class= "card-resa pt-5 ">
     <div class= "d-flex row gx-5 ">
@@ -34,13 +37,13 @@
         <div class= "card-shadow col pt-3 text-center">
           <h2 class = "fs-2">Mes reservations</h2>
           <hr>
-          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('chat_resa.jpeg') %>)">
             <div class= "d-flex row">
               <p class= "text-center">p'tit roux</p>
-              <p class= "text-center">date</p>
+              <p class= "text-center">date </p>
             </div>
            </div>
-          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('chat_resa.jpeg') %>)">
             <div class= "d-flex row">
               <p class= "text-center">p'tit roux</p>
               <p class= "text-center">date</p>
@@ -49,7 +52,5 @@
           </div>
         </div>
     </div>
-    <div class="row justify-content-end mt-3">
-      <p class =" col-2 btn-grad"> <%= link_to 'edit', edit_user_registration_path %></p>
-    </div>
   </div>
+
