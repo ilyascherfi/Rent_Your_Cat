@@ -1,5 +1,7 @@
-<div class= " pt-5">
-    <%= simple_form_for [@cat, @reservation] do |f| %>
+<div class= " pt-5 text-center">
+  <h1><%= @cat.name %></h1>
+  <img class='rounded mx-auto d-block' src="<%= @cat.images_url[0] %>" alt="">
+  <%= simple_form_for [@cat, @reservation] do |f| %>
   <div class = "fs-5" >
       <%= f.input :start_date,
                   as: :string,
