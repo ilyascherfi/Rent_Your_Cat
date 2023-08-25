@@ -1,10 +1,10 @@
 <div>
-   <div class = "">
+   <div class = " mt-3">
       <%= simple_form_for @cat do |f| %>
 
         <%= f.input :name %>
         <%= f.input :age %>
-        <%= f.input :race %>
+        <%= f.input :race, collection: Cat::RACE %>
         <%= f.input :price %>
         <%= f.input :description %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>

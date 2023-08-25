@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   has_many :cats, dependent: :destroy
   has_many :revervations, dependent: :destroy
+
   has_one_attached :photo
+
 
   validates :first_name, :last_name, :address, presence: true
 end
