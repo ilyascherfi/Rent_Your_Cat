@@ -8,6 +8,12 @@
 require "json"
 require "open-uri"
 require 'faker'
+
+puts 'Destroying all'
+Reservation.destroy_all
+Cat.destroy_all
+User.destroy_all
+
 cat_breeds = [
   "Abyssinian",
   "American Shorthair",
@@ -90,10 +96,7 @@ img_url = ["https://cdn2.thecatapi.com/images/e43.jpg",
   "https://cdn2.thecatapi.com/images/a2u.jpg",
   "https://cdn2.thecatapi.com/images/2f6.jpg"]
 
-puts 'Destroying all'
-Reservation.destroy_all
-User.destroy_all
-Cat.destroy_all
+
 
 
 puts 'Creating 10 users'
