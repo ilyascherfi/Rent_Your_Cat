@@ -1,0 +1,39 @@
+
+<div class="d-flex" data-controller="button">
+  <div class="container my-3">
+    <button class = " p-3" id="button-map" data-action="click->button#togglemap" >Cacher la carte</button>
+    <div class= "card-trip">
+      <div class="cards">
+          <% @cats.reverse.each do |cat| %>
+            <%# chat loop  %>
+            <%= link_to cat_path(cat) do  %>
+              <div class="card-trip">
+                <% if cat.photos.attached? %>
+                  <%cat.photos.first(1).each do |img| %>
+                    <%= cl_image_tag img.key, crop: :fill %>
+                  <% end %>
+                <% else %>
+                <img src="<%= cat.images_url[0]%>" alt="">
+                <% end %>
+                <div class="card-trip-infos">
+                  <div >
+                    <div class= "d-flex justify-content-between">
+                      <div>
+                        <h2 class="text-secondary">Nom: <%= cat.name %> </h2>
+                        <h2 class="text-secondary">Race: <%= cat.race %></h2>
+                      </div>
+                      <h2 class="text-secondary">Prix: <%= cat.price %> € </h2>
+                    </div>
+                    <h2 class="text-primary">Description: <%= cat.description %> </h2>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="map_div"  data-controller="map" style="width: 40%; height: 850px; margin-top: 100px;" data-button-target="button"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
+
