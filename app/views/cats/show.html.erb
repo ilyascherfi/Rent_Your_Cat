@@ -40,15 +40,15 @@
               </div>
             <img src="<%= User.find(@cat.user_id).image_url%>" class= "img-round margin-icone" alt="">
           </div>
+          <p class= "ps-3">Description: <%= @cat.description %></p>
 
-          <p>Description: <%= @cat.description %></p>
        </div>
         <div class= "card card-text  rounded-4 pb-3 ">
           <p class ="fw-bolder mt-3 mx-3">price by night <%= @cat.price %> €</p>
             <div class= "card justify-content-center">
 
               <div>
-                <div class="btn-grad ">
+                <div class="btn-grad6 ">
                   <%= link_to "Reserver ce Chat", new_cat_reservation_path(@cat)  %>
                 </div>
 
