@@ -14,7 +14,9 @@ class PagesController < ApplicationController
 
   def profile
     @my_cats = current_user.cats
-    @reservations = Reservation.where(cat: @my_cats)
+    @reservations_received = Reservation.where(cat: @my_cats)
+    @reservations_sent = Reservation.where(user: current_user)
+
   end
 
 end
