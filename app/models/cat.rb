@@ -1,4 +1,5 @@
 class Cat < ApplicationRecord
+  include PgSearch::Model
   has_many_attached :photos
   belongs_to :user
   has_many :reservations, dependent: :destroy
@@ -13,4 +14,9 @@ class Cat < ApplicationRecord
   validates :sexe, inclusion: { in: SEXE }
   validates :race, inclusion: { in: RACE }
 
+  pg_search_scope :search_by_name_race_description_price_sexe_location,
+    against: [ :name, :race, :description, :price, :sexe, :location ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

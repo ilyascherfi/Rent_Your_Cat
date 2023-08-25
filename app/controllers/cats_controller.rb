@@ -1,7 +1,11 @@
 class CatsController < ApplicationController
   before_action :find_cat, only: %i[show edit update destroy]
   def index
-    @cats = Cat.all
+    if current_user
+      @cats = Cats.where.not(user: current_user)
+    else
+      @cats = Cat.all
+    end
   end
 
   def show
@@ -18,13 +22,12 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     @cat.user = current_user
-    if @cat.save
+    if @cat.save!
       redirect_to cat_path(@cat), notice: "cat was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def update
     if @cat.update(cat_params)

@@ -8,6 +8,16 @@ class Reservation < ApplicationRecord
   validate :cannot_reserve_own_cat
   after_create :calculate_total
 
+  def statut_string
+    if statut.nil?
+      'Pending'
+    elsif statut
+      'Accepté'
+    else
+      'Refusé'
+    end
+  end
+
   private
 
   def calculate_total

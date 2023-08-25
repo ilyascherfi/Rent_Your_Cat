@@ -13,7 +13,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
     @reservation.cat = @cat
-    @reservation.statut = true
 
     if @reservation.save!
       redirect_to profile_path, notice: "reservation was successfully created."
@@ -26,6 +25,17 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     redirect_to cats_path(@reservation.cat)
+  end
+
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(statut: true)
+    redirect_to profile_path
+  end
+
+  def reject
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(statut: false)
   end
 
   private

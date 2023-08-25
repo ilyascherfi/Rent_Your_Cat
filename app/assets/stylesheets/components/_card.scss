@@ -19,7 +19,9 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
   grid-gap: 13px;
+
 
 }
 
@@ -64,12 +66,11 @@
   overflow: hidden;
   // background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  border-radius: 5%;
+  border-radius: 2rem;
   margin-top: 15px;
   margin-bottom: 15px;
   margin-right: 17px;
   margin-left: 17px,
-
 
 }
 
@@ -92,18 +93,17 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
-
-
 }
 
 
 .card-trip .card-trip-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+   
+    height: 146px;
 }
 
 .card-trip-infos .card-trip-user {
@@ -156,11 +156,14 @@
 
 .card-product {
   overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+    height: 141px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: 0px;
+    width: 555px;
 }
 
 .card-product img {
@@ -231,13 +234,13 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0  6px rgba(0,0,0,0.1);
-  padding-left: 20rem;
-  padding-right: 20rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
 }
 
 .card-resa{
-  padding-left: 20rem;
-  padding-right: 20rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
 }
 
 .card-shadow{
@@ -249,4 +252,11 @@
   padding-left: 3rem;
   padding-right: 3rem;
   display: flex
+}
+
+
+.card-shadow{
+  box-shadow: 0 0  6px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }

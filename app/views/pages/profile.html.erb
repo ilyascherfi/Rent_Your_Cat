@@ -2,55 +2,88 @@
   <h1 class= "pt-3 "> Bienvenue <%= current_user.first_name %> </h1>
   <div class= "d-flex flew-row justify-content-between ps-3">
     <ul>
-      <li class= "fs-5 pt-5 pb-2">Prenom : <%= current_user.first_name %>
+      <li class= "typo-light pt-5 pb-2">Prenom : <%= current_user.first_name %>
       </li>
-      <li class= "fs-5 pb-2">Nom : <%= current_user.last_name %>
+      <li class= " pb-2">Nom : <%= current_user.last_name %>
       </li>
-      <li class= "fs-5 pb-2">Email : <%= current_user.email %>
+      <li class= " pb-2">Email : <%= current_user.email %>
       </li>
-      <li class= "fs-5 pb-2">Adresse : <%= current_user.address %>
+      <li class= " pb-2">Adresse : <%= current_user.address %>
       </li>
-
     </ul>
-      <p class= "card-user rounded-3 px-2">
-        <img class='avatar-large' src="<%= current_user.image_url %>" alt="">
-      </p>
+      <div class= "card-user rounded-3 px-2">
+        <%# affichier la photo dans le profile %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, height: 220, width: 220, crop: :fill, class:"rounded" %>
+         <% else %>
+          <img src="<%= current_user.image_url%>" alt="", class="avatar-large">
+         <% end %>
+      </div>
 </div>
-    <div class="row justify-content-end mt-3">
-      <p class =" col-2 btn-grad"> <%= link_to 'edit', edit_user_registration_path %></p>
-    </div>
+  <div class="row justify-content-end mt-3">
+    <p class =" col-2 btn-grad"> <%= link_to 'edit', edit_user_registration_path %></p>
   </div>
-  <div class= "card-resa pt-5 ">
-    <div class= "d-flex row gx-5 ">
-          <div class= "card-shadow col pt-3 me-4 text-center">
-            <h2 class= "fs-2">Mes chats</h2>
-            <hr>
-            <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
-            <p class= "text-start">p'tit chat</p>
+</div>
+<div class="">
+    <div class= "card-resa pt-5 ">
+      <div class= "d-flex row gx-5 ">
+            <div class= "card-shadow col pt-3 me-4 text-center pb-5">
+              <h2 class= "px-3 fs-">Reservations emises</h2>
+              <hr>
+              <% @reservations_sent.each do |resa| %>
+              <div class="card-product">
+                <%# afficher l'image soit des seed ou de cloudinary  %>
+                <% if resa.cat.photos.attached? %>
+                  <%cat.photos.first(1).each do |img| %>
+                    <%= cl_image_tag img.key, crop: :fill %>
+                  <% end %>
+                <% else %>
+                <img src="<%= resa.cat.images_url[0]%>" alt="">
+                <% end %>
+                <div class="card-product-infos">
+                  <h2>Nom: <%= resa.cat.name %></h2>
+                  <p>Date debut: <%= resa.start_date %></p>
+                  <p>Date fin: <%= resa.end_date %></p>
+                  <p>Prix total: <%= resa.total_price %>€</p>
+                  <p>Statut: <%= resa.statut_string %></p>
+                </div>
+              </div>
+              <% end %>
             </div>
-              <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
-            <p class= "text-start">p'tit chat</p>
+          <div class= "card-shadow col pt-3 text-center">
+            <h2 class = "fs-">Reservations reçues</h2>
+            <hr>
+            <% @reservations_received.each do |resa| %>
+              <div class="card-product">
+                <% if resa.cat.photos.attached? %>
+                  <%resa.cat.photos.first(1).each do |img| %>
+                    <%= cl_image_tag img.key, crop: :fill %>
+                  <% end %>
+                <% else %>
+                  <img src="<%= resa.cat.images_url[0]%>" alt="">
+                <% end %>
+                <div class="card-product-infos">
+                  <div class="d-flex  ">
+                    <div class = "mx-3 " >
+                    <p class="text-start ">Name <%= resa.cat.name %></p>
+                    <p class=" text-start ">date_st <%= resa.start_date %></p>
+                    <p class=" text-start ">date_en <%= resa.end_date %></p>
+                    <p class=" text-start ">total <%= resa.total_price %> </p>
+                    <p class=" text-start ">Statut: <%= resa.statut_string %></p>
+                    </div>
+                    <% if resa.statut.nil? %>
+                    <div class= "  ">
+                      <p class =" margin-btn btn-grad-green"> <%= link_to 'Approuver', edit_user_registration_path %></p>
+                      <p class =" margin-btn btn-grad-red"> <%= link_to 'Refuser ', edit_user_registration_path %></p>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
             </div>
           </div>
-
-
-        <div class= "card-shadow col pt-3 text-center">
-          <h2 class = "fs-2">Mes reservations</h2>
-          <hr>
-          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('chat_resa.jpeg') %>)">
-            <div class= "d-flex row">
-              <p class= "text-center">p'tit roux</p>
-              <p class= "text-center">date </p>
-            </div>
-           </div>
-          <div  class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('chat_resa.jpeg') %>)">
-            <div class= "d-flex row">
-              <p class= "text-center">p'tit roux</p>
-              <p class= "text-center">date</p>
-            </div>
-            <hr>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
-
+</div>

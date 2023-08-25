@@ -9,7 +9,7 @@ export default class extends Controller {
 
   togglemap(event) {
     this.buttonTarget.classList.toggle("d-none")
-    let txt = event.currentTarget.innerText
+    const txt = event.currentTarget.innerText
     if (txt === "Cacher la map") {
       event.currentTarget.innerText = "Cacher la map"
     } else {
