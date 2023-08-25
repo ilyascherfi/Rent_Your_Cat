@@ -1,0 +1,14 @@
+<h2><%= cat.name %></h2>
+<img class='rounded-3' style="width: 150px;" src= '<%= cat.images_url[0] %>' alt="">
+<p>
+  <ul>
+    <li><%= cat.sexe %></li>
+    <li><%= cat.age %></li>
+    <li><%= cat.race %></li>
+    <li><%= cat.location %> </li>
+  </ul>
+<div class="black">
+  <%= link_to 'view', cat_path(cat), class: 'btn btn-warning' %>
+  <%= link_to 'louer', new_cat_reservation_path(cat), class: 'btn btn-primary'%>
+</div>
+</p>
