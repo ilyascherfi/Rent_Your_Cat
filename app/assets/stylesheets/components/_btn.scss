@@ -3,7 +3,6 @@
   background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%);
   margin: 10px;
   color: white;
-  padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -13,6 +12,10 @@
   display: block;
   text-shadow: 1px 1px 2px black;
   border-color: white;
+  width: 116px;
+  height: 35px;
+  padding-top: 3px;
+  font-size: medium;
 }
 
 .btn-grad:hover {
@@ -25,6 +28,7 @@ a {
   text-decoration: none;
   color:white;
   font-size: larger;
+
 
 }
 
@@ -49,4 +53,65 @@ a {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
+}
+
+
+
+
+.btn-grad-green {
+  background-image: linear-gradient(to right, #1D976C 0%, #93F9B9  51%, #1D976C  100%);
+  margin: -42px;
+  // padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  padding-top: 9px;
+  display: block;
+  width: 96px;
+  height: 38px;
+  font-size: medium;
+}
+
+.btn-grad-green:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+.btn-grad-red {
+  background-image: linear-gradient(to right, #e53935 0%, #e35d5b  51%, #e53935  100%);
+  margin: 10px;
+  // padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  padding-top: 9px;
+  display: block;
+  width: 96px;
+  height: 38px;
+  font-size: medium;
+}
+
+
+.btn-grad-red:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.margin-btn{
+  margin-left: 10rem;
+  margin-top: 1rem;
 }
