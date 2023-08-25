@@ -2,7 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @cats = Cat.all
+
+    if params[:query].present?
+      @cats = Cat.search_by_name_race_description_price_sexe_location(params[:query])
+    else
+      @cats = Cat.all
+    end
     @users = User.all
     @markers = @cats.geocoded.map do |cat|
       {
