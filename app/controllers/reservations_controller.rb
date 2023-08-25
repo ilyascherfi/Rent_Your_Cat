@@ -28,6 +28,11 @@ class ReservationsController < ApplicationController
     redirect_to cats_path(@reservation.cat)
   end
 
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(statut: true)
+  end
+
   private
 
   def reservation_params
