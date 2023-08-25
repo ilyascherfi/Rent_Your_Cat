@@ -1,7 +1,11 @@
 class CatsController < ApplicationController
   before_action :find_cat, only: %i[show edit update destroy]
   def index
-    @cats = Cat.all
+    if current_user
+      @cats = Cats.where.not(user: current_user)
+    else
+      @cats = Cat.all
+    end
   end
 
   def show

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :reservations, only: [:destroy]
   # Defines the root path route ("/")
   # root "articles#index"
+  patch '/accept/:id', to: 'reservations#accept', as: 'accept'
 end
