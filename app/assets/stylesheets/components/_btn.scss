@@ -43,11 +43,40 @@
   font-size: medium;
 }
 
+
 .btn-grad5:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
 }
+
+
+.btn-grad6 {
+  background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4 51%, #E55D87 100%);
+    margin: 10px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    text-shadow: 1px 1px 2px black;
+    border-color: white;
+    width: 206px;
+    height: 57px;
+    padding-top: 14px;
+    font-size: medium;
+    margin-left: 76px;
+}
+
+.btn-grad6:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
 
 a {
   text-decoration: none;
