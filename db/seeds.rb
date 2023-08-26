@@ -133,7 +133,7 @@ today = Date.today
   else
     random_days = rand(0..30)
     random_date = today + random_days
-    reservation = Reservation.create!(user: user, cat: cat, start_date: random_date, end_date: (random_date + 3), statut: false, total_price: (cat.price * 3))
+    reservation = Reservation.create!(user: user, cat: cat, start_date: random_date, end_date: (random_date + 3), total_price: (cat.price * 3))
     puts reservation.cat.name
   end
 end
