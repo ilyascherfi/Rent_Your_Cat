@@ -36,6 +36,7 @@ class ReservationsController < ApplicationController
   def reject
     @reservation = Reservation.find(params[:id])
     @reservation.update(statut: false)
+    redirect_to profile_path
   end
 
   private
