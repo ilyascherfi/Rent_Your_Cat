@@ -12,12 +12,14 @@
       </li>
     </ul>
       <div class= "card-user rounded-3 px-2">
-        <%# affichier la photo dans le profile %>
+       <%# affichier la photo dans le profile %>
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, height: 220, width: 220, crop: :fill, class:"rounded" %>
-         <% else %>
-          <img src="<%= current_user.image_url%>" alt="", class="avatar-large">
-         <% end %>
+          <%= cl_image_tag current_user.photo.key, height: 220, width: 220, crop: :fill, class:" rounded" %>
+        <% elsif current_user.image_url.present?  %>
+          <img  src="<%= current_user.image_url %>" class="avatar", alt="dropdown menu" />
+        <% else%>
+          <img class = "img_profile" src="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" />
+        <% end %>
       </div>
 </div>
   <div class="row justify-content-end mt-3">
@@ -31,10 +33,10 @@
               <h2 class= "px-3 fs-">Reservations emises</h2>
               <hr>
               <% @reservations_sent.each do |resa| %>
-              <div class="card-product">
+              <div class="card-product my-3">
                 <%# afficher l'image soit des seed ou de cloudinary  %>
                 <% if resa.cat.photos.attached? %>
-                  <%cat.photos.first(1).each do |img| %>
+                  <%resa.cat.photos.first(1).each do |img| %>
                     <%= cl_image_tag img.key, crop: :fill %>
                   <% end %>
                 <% else %>
@@ -54,7 +56,7 @@
             <h2 class = "fs-">Reservations reçues</h2>
             <hr>
             <% @reservations_received.each do |resa| %>
-              <div class="card-product">
+              <div class="card-product my-3">
                 <% if resa.cat.photos.attached? %>
                   <%resa.cat.photos.first(1).each do |img| %>
                     <%= cl_image_tag img.key, crop: :fill %>
@@ -73,8 +75,8 @@
                     </div>
                     <% if resa.statut.nil? %>
                     <div class= "  ">
-                      <p class =" margin-btn btn-grad-green"> <%= link_to 'Approuver', edit_user_registration_path %></p>
-                      <p class =" margin-btn btn-grad-red"> <%= link_to 'Refuser ', edit_user_registration_path %></p>
+                      <p class =" margin-btn btn-grad-green"> <%= link_to 'Accept', accept_path(resa), data: { turbo_method: :patch } %></p>
+                      <p class =" margin-btn btn-grad-red"> <%= link_to 'Reject', reject_path(resa), data: { turbo_method: :patch }%></p>
                     </div>
                     <% end %>
                   </div>

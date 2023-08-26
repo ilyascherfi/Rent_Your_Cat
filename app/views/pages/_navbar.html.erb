@@ -51,8 +51,10 @@
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
                   <%= cl_image_tag current_user.photo.key, height: "40", width: "40", class:"avatar", alt: "dropdown menu", crop: :fill %>
-                <% else %>
+                <% elsif current_user.image_url.present?  %>
                   <img  src="<%= current_user.image_url %>" class="avatar", alt="dropdown menu" />
+                <% else%>
+                  <img class="avatar dropdown-toggle"  aria-haspopup="true" aria-expanded="false" src="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" />
                 <% end %>
               </a>
               <div class="dropdown-menu dropdown-menu-end rounded-4" aria-labelledby="navbarDropdown">

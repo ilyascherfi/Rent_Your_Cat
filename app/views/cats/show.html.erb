@@ -38,20 +38,29 @@
                 <p class="ps-3">Race: <%= @cat.race %></p>
                 <p class="ps-3">Sexe: <%= @cat.sexe %></p>
               </div>
-            <img src="<%= User.find(@cat.user_id).image_url%>" class= "img-round margin-icone" alt="">
+            <img src="<%= User.find(@cat.user_id).image_url%>" class= "img-round margin-icone"  onerror="this.src='https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'; this.onerror=null;" alt="">
           </div>
           <p class= "ps-3">Description: <%= @cat.description %></p>
 
        </div>
-        <div class= "card card-text  rounded-4 pb-3 ">
+        <div class= "card card-text  rounded-4 pb-3 ms-2">
           <p class ="fw-bolder mt-3 mx-3">price by night <%= @cat.price %> €</p>
             <div class= "card justify-content-center">
 
-              <div>
-                <div class="btn-grad6 ">
-                  <%= link_to "Reserver ce Chat", new_cat_reservation_path(@cat)  %>
-                </div>
-
+              <div class= "p-3">
+                <%= simple_form_for [@cat, @reservation] do |f| %>
+                 <div class = "fs-5" >
+                  <%= f.input :start_date,
+                              as: :string,
+                              input_html: { data: { controller: "datepicker" } } %>
+                  <%= f.input :end_date,
+                              as: :string,
+                              input_html: { data: { controller: "datepicker" } } %>
+                  </div>
+                  <div class="d-flex  flex-row-reverse fs-3">
+                    <%= f.submit "Reserver le Chat", class:"btn-grad5" %>
+                  </div>
+                <%end%>
               </div>
             </div>
             <div class = "d-flex flex-row justify-content-between mt-3">
