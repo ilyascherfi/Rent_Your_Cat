@@ -7,7 +7,6 @@
     <div class="form-inputs">
       <%= f.input :first_name,
                   required: false,
-
                   autofocus: true,
                   input_html: { autocomplete: "Nom" }%>
       <%= f.input :last_name,
@@ -18,6 +17,7 @@
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "Email" }%>
+      <%= f.input :photo %>
       <%= f.input :address,
                   required: false,
                   autofocus: true,
